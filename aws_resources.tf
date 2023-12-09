@@ -12,7 +12,7 @@ resource "aws_vpc" "tf-vpc" {
 resource "aws_subnet" "tf-subnet" {
   vpc_id     = aws_vpc.tf-vpc.id
   cidr_block = "10.0.1.0/24"
-availability_zone = "us-east-1c"
+availability_zone = "ap-south-1a"
 map_public_ip_on_launch = "true"
 
   tags = {
@@ -85,9 +85,9 @@ resource "aws_security_group" "tf-sg" {
 
 # AWS Instance
 resource "aws_instance" "tf-ec2" {
-  ami           = "ami-06aa3f7caf3a30282"
+  ami           = "ami-0f2967bce46537146"
   instance_type = "t2.medium"
-  key_name = "ravi"
+  key_name = "sivaniserver"
   subnet_id = aws_subnet.tf-subnet.id
   vpc_security_group_ids = [aws_security_group.tf-sg.id]
   user_data = file("ecomm.sh")
